@@ -23,7 +23,8 @@
   --ok:#4a7d6b;
   --serif:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Songti SC",serif;
   --sans:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI",Meiryo,system-ui,sans-serif;
-  --appbar-h:52px;
+  --appbar-h:52px;             /* 後方互換のため残置（未使用） */
+  --appbar-content-h:52px;     /* 上部バーの中身(行+バナー)の実測高さ。セーフエリアは含めない */
   --tabbar-h:56px;
   --sb:env(safe-area-inset-bottom,0px);
   --st:env(safe-area-inset-top,0px);
@@ -34,7 +35,7 @@ body{
   background:var(--bg); color:var(--fg);
   font-family:var(--sans); font-size:15px; line-height:1.62;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  padding-top:var(--appbar-h);
+  padding-top:calc(var(--st) + var(--appbar-content-h));
   padding-bottom:calc(var(--tabbar-h) + var(--sb) + 10px);
   overflow-x:hidden;
 }
@@ -167,7 +168,7 @@ input,textarea,select{font-family:inherit; font-size:16px; color:var(--fg);}
 
 .year-sec{margin-bottom:2px;}
 .year-sticky{
-  position:sticky; top:var(--appbar-h); z-index:10;
+  position:sticky; top:calc(var(--st) + var(--appbar-content-h)); z-index:10;
   background:linear-gradient(180deg,var(--bg) 72%,rgba(12,15,22,.86));
   padding:9px 14px 8px;
 }
@@ -1575,7 +1576,15 @@ function switchTab(tab){
 }
 
 function appbarHeight(){ return $("appbar").offsetHeight; }
-function setAppbarVar(){ document.documentElement.style.setProperty("--appbar-h", $("appbar").offsetHeight+"px"); }
+/* セーフエリア(--st)はCSSのenv()に任せ、JSはバーの「セーフエリアを除いた高さ」だけを測る。
+   = offsetHeight - padding-top(=解決済みのsafe-area-inset-top)。行・枠線・バナーを自動で含み、
+   standalone起動時にenv(safe-area-inset-top)の確定が遅れても本文位置がズレない。 */
+function setAppbarVar(){
+  var ab=$("appbar");
+  var padTop=parseFloat(getComputedStyle(ab).paddingTop)||0;
+  var h=Math.max(0, ab.offsetHeight - padTop);
+  document.documentElement.style.setProperty("--appbar-content-h", h+"px");
+}
 
 /* 背景タップで閉じる */
 ["sheet-layer","dialog-layer"].forEach(function(id){
