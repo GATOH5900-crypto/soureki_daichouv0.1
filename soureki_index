@@ -1,0 +1,250 @@
+{
+  "app": "soreki-daicho",
+  "schemaVersion": 2,
+  "meta": {
+    "title": "ローゼリア年代記（見本）",
+    "exportedAt": "2026-07-05T03:12:13"
+  },
+  "tags": [
+    {
+      "id": "tag_01",
+      "name": "外交",
+      "color": "#a63a50"
+    },
+    {
+      "id": "tag_02",
+      "name": "軍事",
+      "color": "#4a5e9e"
+    },
+    {
+      "id": "tag_03",
+      "name": "事件",
+      "color": "#a8863a"
+    },
+    {
+      "id": "tag_04",
+      "name": "人物",
+      "color": "#7d8c4a"
+    },
+    {
+      "id": "tag_05",
+      "name": "条約",
+      "color": "#4a7d8c"
+    },
+    {
+      "id": "tag_06",
+      "name": "厄災",
+      "color": "#7d4a8c"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt_mr6obv1u9gj6",
+      "title": "第二次反魔戦争",
+      "memo": "蒼暦1915年〜1925年。ローゼリア大公国を含む諸国を巻き込んだ大戦。以降の年表はこの戦争を軸に読む。",
+      "tags": [
+        "tag_02",
+        "tag_06"
+      ],
+      "start": {
+        "year": 1915,
+        "month": null,
+        "day": null
+      },
+      "end": {
+        "year": 1925,
+        "month": null,
+        "day": null
+      },
+      "createdAt": 1710000000000,
+      "updatedAt": 1710000000000,
+      "sub": 0
+    },
+    {
+      "id": "evt_mr6obv1u0zol",
+      "title": "開戦布告",
+      "memo": "蒼暦1915年3月14日、北方国境での衝突を契機に宣戦。",
+      "tags": [
+        "tag_02"
+      ],
+      "start": {
+        "year": 1915,
+        "month": 3,
+        "day": 14
+      },
+      "createdAt": 1710000000001,
+      "updatedAt": 1710000000001,
+      "sub": 0,
+      "end": null
+    },
+    {
+      "id": "evt_mr6obv1u2p2k",
+      "title": "北部戦線の崩壊",
+      "memo": "年内に前線が後退。詳細な月日は諸記録で食い違う。",
+      "tags": [
+        "tag_02",
+        "tag_03"
+      ],
+      "start": {
+        "year": 1917,
+        "month": null,
+        "day": null
+      },
+      "createdAt": 1710000000002,
+      "updatedAt": 1710000000002,
+      "sub": 0,
+      "end": null
+    },
+    {
+      "id": "evt_mr6obv1ueokq",
+      "title": "ミシェーラ将軍 前線着任",
+      "memo": "蒼暦1918年6月、立て直しのため中央から派遣。",
+      "tags": [
+        "tag_04",
+        "tag_02"
+      ],
+      "start": {
+        "year": 1918,
+        "month": 6,
+        "day": null
+      },
+      "createdAt": 1710000000003,
+      "updatedAt": 1710000000003,
+      "sub": 0,
+      "end": null
+    },
+    {
+      "id": "evt_mr6obv1uobdh",
+      "title": "北方戦線 膠着",
+      "memo": "この年は大きな戦線移動がなく、消耗戦に入る。年精度の記録。",
+      "tags": [
+        "tag_02"
+      ],
+      "start": {
+        "year": 1920,
+        "month": null,
+        "day": null
+      },
+      "createdAt": 1710000000004,
+      "updatedAt": 1710000000004,
+      "sub": 0,
+      "end": null
+    },
+    {
+      "id": "evt_mr6obv1ux1x6",
+      "title": "停戦交渉 開始",
+      "memo": "蒼暦1920年1月、第三国の仲介で予備交渉が始まる。",
+      "tags": [
+        "tag_01"
+      ],
+      "start": {
+        "year": 1920,
+        "month": 1,
+        "day": null
+      },
+      "createdAt": 1710000000005,
+      "updatedAt": 1710000000005,
+      "sub": 0,
+      "end": null
+    },
+    {
+      "id": "evt_mr6obv1uqhgi",
+      "title": "ローゼリア条約 締結",
+      "memo": "特別加盟協定。以降の外交案件はすべてここを参照する。",
+      "tags": [
+        "tag_01",
+        "tag_05"
+      ],
+      "start": {
+        "year": 1925,
+        "month": null,
+        "day": null
+      },
+      "createdAt": 1710000000006,
+      "updatedAt": 1710000000006,
+      "sub": 0,
+      "end": null
+    },
+    {
+      "id": "evt_mr6obv1uuzj5",
+      "title": "戦後復興令",
+      "memo": "荒廃した北部の再建を定める大公令。",
+      "tags": [
+        "tag_03"
+      ],
+      "start": {
+        "year": 1926,
+        "month": null,
+        "day": null
+      },
+      "createdAt": 1710000000007,
+      "updatedAt": 1710000000007,
+      "sub": 0,
+      "end": null
+    },
+    {
+      "id": "evt_mr6obv1u6y22",
+      "title": "大公位継承",
+      "memo": "長い空白を経て、新大公が即位。",
+      "tags": [
+        "tag_04"
+      ],
+      "start": {
+        "year": 1958,
+        "month": null,
+        "day": null
+      },
+      "createdAt": 1710000000008,
+      "updatedAt": 1710000000008,
+      "sub": 0,
+      "end": null
+    },
+    {
+      "id": "evt_mr6obv1upknf",
+      "title": "第三共和政 宣言",
+      "memo": "蒼暦1958年11月、統治体制の転換が布告される。",
+      "tags": [
+        "tag_03"
+      ],
+      "start": {
+        "year": 1958,
+        "month": 11,
+        "day": null
+      },
+      "createdAt": 1710000000009,
+      "updatedAt": 1710000000009,
+      "sub": 0,
+      "end": null
+    }
+  ],
+  "legends": [
+    {
+      "id": "leg_mr6obv1udsng",
+      "title": "古代文明の崩壊",
+      "memo": "伝承のみ。年代の確定は不能。",
+      "tags": [
+        "tag_06"
+      ],
+      "approx": "約4000年前",
+      "order": 0
+    },
+    {
+      "id": "leg_mr6obv1u2ocg",
+      "title": "蒼の顕現",
+      "memo": "暦の始点にまつわる伝承。",
+      "tags": [],
+      "approx": "蒼暦以前",
+      "order": 1
+    },
+    {
+      "id": "leg_mr6obv1ulszk",
+      "title": "第一の厄災期",
+      "memo": "複数の記録が断片的に伝える災厄の時代。",
+      "tags": [
+        "tag_06"
+      ],
+      "approx": "約2000年前",
+      "order": 2
+    }
+  ]
+}
