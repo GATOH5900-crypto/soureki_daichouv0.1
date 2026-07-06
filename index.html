@@ -484,10 +484,10 @@ textarea.io{
 .ev-sum{font-size:14px; line-height:1.7; padding:6px 0 4px; word-break:break-word;}
 .ev-sec-lb{font-family:var(--serif); font-size:12px; letter-spacing:.1em; color:var(--muted); margin:16px 0 6px; padding-bottom:5px; border-bottom:1px solid var(--line);}
 .ev-fields{display:flex; flex-direction:column;}
-.ev-frow{display:flex; gap:12px; padding:6px 0; border-bottom:1px solid #1b212c; font-size:13.5px;}
+.ev-frow{display:flex; gap:12px; padding:6px 0; border-bottom:1px solid #1b212c; font-size:13.5px; align-items:flex-start;}
 .ev-frow:last-child{border-bottom:0;}
 .ev-fk{color:var(--muted); min-width:90px; flex:0 0 auto;}
-.ev-fv{flex:1; word-break:break-word;}
+.ev-fv{flex:1; word-break:break-word; white-space:pre-wrap;}
 .ev-rels{display:flex; flex-direction:column; gap:7px;}
 .ev-rel{display:flex; align-items:center; gap:9px; border:1px solid var(--line2); background:var(--card); color:var(--fg); border-radius:9px; padding:9px 11px; text-align:left; width:100%;}
 .ev-rel-type{font-size:11px; color:var(--muted); flex:0 0 auto; min-width:44px;}
@@ -502,10 +502,11 @@ textarea.io{
 .kind-b{border:1px solid var(--line2); background:var(--card); color:var(--muted); border-radius:8px; padding:8px 11px; font-size:12.5px; min-height:38px;}
 .kind-b.on{border-color:#8f2530; background:#1e1418; color:var(--fg);}
 .kv-box{display:flex; flex-direction:column; gap:8px;}
-.kv-row{display:flex; gap:7px; align-items:center;}
-.kv-row input{background:#0c1017; border:1px solid var(--line2); border-radius:8px; padding:9px 10px; min-width:0;}
-.kv-row input:first-child{flex:0 0 38%;}
-.kv-row input:nth-child(2){flex:1;}
+.kv-item{display:flex; flex-direction:column; gap:6px; padding:9px 0; border-bottom:1px solid #1b212c;}
+.kv-item:last-of-type{border-bottom:0;}
+.kv-keyrow{display:flex; gap:7px; align-items:center;}
+.kv-key{flex:1; background:#0c1017; border:1px solid var(--line2); border-radius:8px; padding:9px 10px; min-width:0;}
+.kv-val{width:100%; background:#0c1017; border:1px solid var(--line2); border-radius:9px; padding:11px; color:var(--fg); line-height:1.6; min-height:88px; resize:vertical;}
 .rel-row{display:flex; gap:7px; align-items:center;}
 .rel-row input{flex:1; background:#0c1017; border:1px solid var(--line2); border-radius:8px; padding:9px 10px; min-width:0;}
 .rel-pick{flex:0 0 42%; text-align:left; background:var(--card2); border:1px solid var(--line2); color:var(--fg); border-radius:8px; padding:9px 10px; font-size:12.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
@@ -1472,7 +1473,8 @@ function renderEntryView(){
     scroll.appendChild(h("div",{class:"ev-sec-lb",text:"項目"}));
     var ft=h("div",{class:"ev-fields"});
     visFields.forEach(function(f){
-      ft.appendChild(h("div",{class:"ev-frow"},[h("span",{class:"ev-fk",text:f.k||""}),h("span",{class:"ev-fv",text:f.v||""})]));
+      var fv=h("span",{class:"ev-fv"}); linkifyInto(fv, f.v||"", refYear);
+      ft.appendChild(h("div",{class:"ev-frow"},[h("span",{class:"ev-fk",text:f.k||""}),fv]));
     });
     scroll.appendChild(ft);
   }
@@ -1592,10 +1594,10 @@ function openEntrySheet(existing, preset){
   function renderFields(){
     clear(fieldsBox);
     fieldsW.forEach(function(f,idx){
-      var ik=h("input",{type:"text",value:f.k,placeholder:"項目名",oninput:function(){ f.k=ik.value; }});
-      var iv=h("input",{type:"text",value:f.v,placeholder:"内容",oninput:function(){ f.v=iv.value; }});
+      var ik=h("input",{class:"kv-key",type:"text",value:f.k,placeholder:"項目名",oninput:function(){ f.k=ik.value; }});
       var del=h("button",{class:"kv-del",text:"✕",onclick:function(){ fieldsW.splice(idx,1); renderFields(); }});
-      fieldsBox.appendChild(h("div",{class:"kv-row"},[ik,iv,del]));
+      var iv=h("textarea",{class:"kv-val",placeholder:"内容（[[名前]] で他の項目にリンクできます）",oninput:function(){ f.v=iv.value; }}); iv.value=f.v;
+      fieldsBox.appendChild(h("div",{class:"kv-item"},[h("div",{class:"kv-keyrow"},[ik,del]),iv]));
     });
     fieldsBox.appendChild(h("button",{class:"kv-add",text:"＋ 項目を追加",onclick:function(){ fieldsW.push({k:"",v:""}); renderFields(); }}));
   }
